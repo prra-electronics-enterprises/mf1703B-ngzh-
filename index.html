@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk" />
+<title>驱动之家 MyDrivers.com - 新闻中心</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: SimSun,"宋体",Arial,sans-serif; font-size:12px; background:#c0c8d4; color:#000; min-width:800px; }
+a { color:#0000cc; text-decoration:underline; font-size:12px; }
+a:hover { color:#cc0000; }
+
+#t1 {
+  background: linear-gradient(to bottom, #5588cc 0%, #2255aa 40%, #1144aa 100%);
+  display:flex; align-items:center; padding:2px 5px; gap:4px; min-height:22px;
+  border-bottom:1px solid #0033aa;
+}
+#t1 a { color:#fff; font-size:11px; text-decoration:none; }
+#t1 a:hover { color:#ffff88; }
+.sep { color:#6688cc; margin:0 1px; }
+.tb-search { display:flex; align-items:center; gap:2px; margin-left:auto; }
+.tb-search input { width:130px; height:18px; font-size:11px; border:1px solid #7799cc; padding:0 3px; background:#e8f0ff; }
+.tb-search select { height:18px; font-size:11px; }
+.tb-search button { height:18px; font-size:11px; padding:0 6px; background:linear-gradient(to bottom,#ffaa00,#dd8800); border:1px solid #aa6600; cursor:pointer; color:#000; font-weight:bold; }
+.tb-right { display:flex; flex-direction:column; font-size:9px; gap:1px; margin-left:6px; }
+.tb-right a { color:#ffff99; font-size:9px; text-decoration:none; }
+
+#t2 {
+  background: linear-gradient(to bottom, #ffffff 0%, #e8f0ff 100%);
+  display:flex; align-items:center; padding:3px 5px; gap:5px;
+  border-bottom:2px solid #1144aa;
+}
+.logo-wrap { display:flex; align-items:center; gap:3px; flex-shrink:0; }
+.logo-red {
+  width:38px; height:38px; border-radius:50%;
+  background: radial-gradient(circle at 38% 32%, #ff9999, #cc0000 60%, #880000);
+  border:2px solid #cc0000;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:bold; font-size:10px; font-family:"SimHei",Arial;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.5);
+  text-align:center; line-height:1.1;
+}
+.logo-cn { font-size:13px; font-weight:bold; color:#1144aa; font-family:"SimHei",Arial; }
+.logo-en { font-size:9px; color:#1144aa; font-family:Arial; font-weight:bold; }
+#mainnav { display:flex; flex-wrap:wrap; margin-left:4px; }
+#mainnav a { color:#333; font-size:11px; text-decoration:none; padding:1px 5px; border-right:1px solid #ccc; }
+#mainnav a:hover { color:#cc0000; }
+
+#t3 {
+  background: linear-gradient(to bottom, #ddeeff, #cce0ff);
+  padding:2px 6px; display:flex; flex-wrap:wrap; gap:3px;
+  border-bottom:1px solid #aac8ee; font-size:11px;
+}
+#t3 a { color:#333; font-size:11px; text-decoration:none; padding:0 3px; }
+#t3 a:hover { color:#cc0000; }
+#t3 .sep2 { color:#aaa; }
+
+#newshead { display:flex; align-items:stretch; background:#fff; border-bottom:1px solid #2255aa; }
+.nh-logo {
+  background: linear-gradient(to bottom, #3366cc, #1133aa);
+  padding:8px 12px; display:flex; align-items:center; flex-shrink:0;
+  border-right:2px solid #0022aa;
+}
+.nh-logo-txt {
+  font-size:32px; font-weight:bold; color:#fff;
+  font-family:"SimHei","黑体",Arial; letter-spacing:2px; line-height:1;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.nh-icons {
+  display:flex; align-items:center; gap:4px; padding:4px 6px;
+  background: linear-gradient(to bottom,#f8f8f8,#eeeeee);
+  flex-wrap:wrap; flex:1;
+}
+.bk { width:34px; height:30px; border:1px solid #aaa; background:#fff; display:inline-flex; align-items:flex-start; justify-content:flex-start; padding:1px; position:relative; flex-shrink:0; }
+.bk::before { content:""; display:block; width:14px; height:11px; border:1px solid #888; background:#dde8ff; }
+.bk::after { content:"?"; position:absolute; top:1px; left:1px; font-size:8px; color:#666; font-family:Arial; }
+.rss { background:#ff5500; color:#fff; font-size:10px; font-weight:bold; padding:2px 6px; border:1px solid #cc3300; margin-left:auto; align-self:center; font-family:Arial; cursor:pointer; border-radius:2px; }
+.nh-blog { display:flex; flex-direction:column; align-items:flex-end; padding:4px 6px; font-size:9px; flex-shrink:0; }
+.nh-blog a { color:#cc0000; font-size:9px; text-decoration:none; }
+
+#catnav {
+  background: linear-gradient(to bottom, #2255bb, #1144aa);
+  display:flex; align-items:center; flex-wrap:wrap;
+  padding:1px 4px; gap:0; border-bottom:1px solid #0033aa;
+}
+.catnav-url { color:#fff; font-size:9px; padding:1px 6px; border-right:1px solid #4466cc; white-space:nowrap; }
+.catnav-links { display:flex; flex-wrap:wrap; flex:1; }
+.catnav-links a { color:#fff; font-size:10px; padding:1px 7px; text-decoration:none; border-right:1px solid #3355bb; line-height:1.8; white-space:nowrap; }
+.catnav-links a:hover { background:#ff6600; }
+
+#bc { background:#fff; padding:3px 7px; font-size:11px; border-bottom:1px solid #ddd; display:flex; justify-content:space-between; align-items:center; }
+.bc-right { display:flex; align-items:center; gap:4px; }
+.bc-right span { color:#888; font-size:10px; }
+.bc-right input { width:120px; height:16px; font-size:10px; border:1px solid #aaa; padding:0 2px; }
+.bc-right button { height:16px; font-size:10px; padding:0 5px; border:1px solid #888; background:#f0f0f0; cursor:pointer; }
+
+#arts { background:#fff; display:flex; flex-wrap:nowrap; padding:6px 4px; gap:0; border-bottom:2px solid #ccc; }
+.art { width:168px; padding:2px 4px; border-right:1px solid #e0e0e0; vertical-align:top; }
+.art:last-child { border-right:none; }
+.art-img { width:158px; height:105px; background:#e8e8e8; border:1px solid #bbb; display:flex; align-items:flex-start; justify-content:flex-start; padding:2px; position:relative; }
+.art-img::before { content:""; display:block; width:16px; height:13px; border:1px solid #888; background:#dde8ff; }
+.art-img::after { content:"?"; position:absolute; top:1px; left:1px; font-size:9px; color:#666; font-family:Arial; }
+.art-cap { font-size:10px; color:#333; margin-top:3px; line-height:1.4; }
+.art-cap a { color:#0000cc; font-size:10px; }
+
+#fc { display:flex; background:#fff; border-bottom:2px solid #ccc; }
+.fc-col { flex:1; padding:5px 7px; border-right:1px solid #ddd; }
+.fc-col:last-child { border-right:none; }
+.fc-hd { border-left:4px solid #cc2222; padding-left:5px; margin-bottom:6px; display:flex; align-items:baseline; gap:5px; border-bottom:1px solid #ddd; padding-bottom:3px; }
+.fc-hd .en { color:#cc2222; font-style:italic; font-weight:bold; font-size:13px; font-family:Georgia,serif; }
+.fc-hd .zh { color:#333; font-size:12px; }
+.fc-body { display:flex; gap:7px; }
+.fc-imgs { display:flex; flex-direction:column; gap:5px; }
+.fc-bk { width:72px; height:52px; border:1px solid #bbb; background:#f4f4f4; display:flex; align-items:flex-start; justify-content:flex-start; padding:2px; position:relative; }
+.fc-bk::before { content:""; display:block; width:14px; height:11px; border:1px solid #888; background:#dde8ff; }
+.fc-bk::after { content:"?"; position:absolute; top:1px; left:1px; font-size:8px; color:#666; font-family:Arial; }
+.fc-links { list-style:none; padding:0; }
+.fc-links li { padding:1px 0; display:flex; align-items:center; gap:3px; font-size:11px; }
+.fc-links li::before { content:"跳"; font-size:9px; color:#888; background:#e8e8e8; padding:0 1px; border:1px solid #ccc; }
+.fc-links li a { color:#0000cc; font-size:11px; }
+
+#sc { background:#c8c8c8; height:16px; border-top:1px solid #aaa; border-bottom:1px solid #aaa; display:flex; align-items:center; padding:0 4px; gap:4px; }
+.sc-box { width:14px; height:12px; background:linear-gradient(to bottom,#4477cc,#2255aa); border:1px solid #1133aa; }
+#sc span { font-size:10px; color:#333; }
+
+#instr { background:#fff; border:1px solid #bbb; margin:3px 0; padding:6px 10px; }
+.instr-top { display:flex; gap:14px; align-items:baseline; }
+.instr-ttl { color:#cc0000; font-size:12px; font-weight:bold; font-family:"Courier New",monospace; }
+.instr-sub { color:#888; font-size:11px; font-family:"Courier New",monospace; }
+.instr-time { color:#333; font-size:11px; font-family:"Courier New",monospace; }
+.instr-body { font-size:11px; font-family:"Courier New",monospace; color:#333; font-style:italic; margin-top:5px; }
+
+#botnav { background:#f0f0f0; padding:4px 8px; font-size:9px; color:#444; border-top:1px solid #ccc; text-align:center; line-height:2; }
+#botnav a { color:#0000cc; font-size:9px; margin:0 2px; }
+
+#foot { background:linear-gradient(to bottom,#e8e8e8,#d8d8d8); padding:5px 8px; font-size:9px; color:#555; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #bbb; }
+.foot-logo { display:flex; align-items:center; gap:5px; }
+.foot-icon { width:32px; height:32px; border-radius:50%; background:radial-gradient(circle at 38% 32%, #ff9999, #cc0000 60%, #880000); border:2px solid #cc0000; display:flex; align-items:center; justify-content:center; color:#fff; font-size:9px; font-weight:bold; font-family:"SimHei",Arial; box-shadow:0 1px 3px rgba(0,0,0,0.4); }
+.foot-txt { font-size:10px; font-weight:bold; color:#1144aa; font-family:"SimHei",Arial; }
+.foot-en { font-size:8px; color:#1144aa; font-family:Arial; }
+</style>
+</head>
+<body>
+
+<div id="t1">
+  <div class="logo-red" style="width:22px;height:22px;font-size:8px;border-width:1px;">驱</div>
+  <span style="color:#ffcc00;font-size:10px;font-weight:bold;">驱动之家</span>
+  <span style="color:#aaccff;font-size:9px;font-family:Arial;">MyDrivers.com</span>
+  <a href="#">榟下</a><span class="sep">|</span>
+  <a href="#">腦盃</a><span class="sep">|</span>
+  <a href="#">琋</a>
+  <div class="tb-search">
+    <input type="text" value="钳抽慝:漈◆" />
+    <select><option>榟下旖逶殁殒</option></select>
+    <button>搜</button>
+  </div>
+  <div class="tb-right">
+    <a href="#">撋斴帮钱钒氡渭</a>
+    <a href="#">腌翁偻逭槺絵</a>
+  </div>
+</div>
+
+<div id="t2">
+  <div class="logo-wrap">
+    <div class="logo-red">驱动<br>之家</div>
+    <div>
+      <div class="logo-cn">驱动之家</div>
+      <div class="logo-en">MyDrivers.com</div>
+    </div>
+  </div>
+  <div id="mainnav">
+    <a href="#">榟构</a>
+    <a href="#">｜聚動</a>
+    <a href="#">搞嗙筒</a>
+    <a href="#">摇钻城</a>
+    <a href="#">｜乃乂揭宗摁揭</a>
+    <a href="#">榟卜旖骨 绪 箍在枢</a>
+    <a href="#">谴戒箍 钳嗙箍 钻ヲ</a>
+    <a href="#">钳戒</a>
+    <a href="#">理俟枢钱题</a>
+    <a href="#">榟卜旖骨剐伤</a>
+    <a href="#">护</a>
+    <a href="#">欢 浣熔</a>
+  </div>
+</div>
+
+<div id="t3">
+  <a href="#">欢宕つ叶</a><span class="sep2">|</span>
+  <a href="#">狃攒煏</a><span class="sep2">|</span>
+  <a href="#">遂辔蠡揭◆</a>
+</div>
+
+<div id="newshead">
+  <div class="nh-logo"><div class="nh-logo-txt">新闻中心</div></div>
+  <div class="nh-icons">
+    <div class="bk"></div><div class="bk"></div><div class="bk"></div>
+    <div class="bk"></div><div class="bk"></div><div class="bk"></div>
+    <div class="bk"></div><div class="bk"></div><div class="bk"></div>
+    <button class="rss">RSS</button>
+  </div>
+  <div class="nh-blog">
+    <a href="#">Blog腦橹溙</a>
+    <a href="#">钮圃琼尚(-)絵</a>
+    <a href="#">絵</a>
+  </div>
+</div>
+
+<div id="catnav">
+  <span class="catnav-url">news.mydrivers.com</span>
+  <div class="catnav-links">
+    <a href="#">镖稿续纥次</a>
+    <a href="#">富哥數钻點次</a>
+    <a href="#">锴帆弑琅烦县</a>
+    <a href="#">镶扮搂裹過揭</a>
+    <a href="#">细芸槺璡烦县</a>
+    <a href="#">踅焰斌燠枪炮</a>
+    <a href="#">媛吉挑逮稿宫</a>
+    <a href="#">OS/杞 欢</a>
+    <a href="#">滑帧嘣绀战</a>
+    <a href="#">瘢住槺镶存满</a>
+  </div>
+</div>
+
+<div id="bc">
+  <span>寨掊堊完岒糯铩◆谙仵栩骨 &nbsp;绪 &nbsp;▶&nbsp; 钮圃琼尚(-)秧</span>
+  <div class="bc-right">
+    <span>钳抽慝:漈◆</span>
+    <input type="text" />
+    <button>谴戒箍</button>
+  </div>
+</div>
+
+<div id="arts">
+  <div class="art"><div class="art-img"></div><div class="art-cap">滑爻橹S8/S8+貂橦橢:希鏈符 钰 繮铸例】插帆帆腼衲 <a href="#">€ 岑蠹</a></div></div>
+  <div class="art"><div class="art-img"></div><div class="art-cap">铸镟页P10前忖镗骨烦病 凑殁旖镶忧补渍微塌摹骥橢:希 <a href="#">€ 浤绽绑</a></div></div>
+  <div class="art"><div class="art-img"></div><div class="art-cap">逸 韩6GB铩吧珑铩铩很宝请 觑8现偌 兀 师铩氡丑镳 <a href="#">写英寮◆</a></div></div>
+  <div class="art"><div class="art-img"></div><div class="art-cap">浥橥帷铩媒芝镗镗烦讳谄抖增 7蛀 环簇肯廉铩瓥稿 <a href="#">着墸嗙</a></div></div>
+  <div class="art"><div class="art-img"></div><div class="art-cap">Excel闱廛 镗橥帷逢戎弋 <a href="#">绡匡细腼旐哈橥稿◆</a></div></div>
+  <div class="art"><div class="art-img"></div><div class="art-cap">钻提€烟橱镳烧€ 衬细 Intel绌炫骏CPU寨抛嚮铩铸 或盏 箍秋◆</div></div>
+</div>
+
+<div id="fc">
+  <div class="fc-col">
+    <div class="fc-hd"><span class="en">Focus</span><span class="zh">热点新闻</span></div>
+    <div class="fc-body">
+      <div class="fc-imgs"><div class="fc-bk"></div><div class="fc-bk"></div></div>
+      <ul class="fc-links">
+        <li><a href="#">PRA60</a></li><li><a href="#">PRA75</a></li>
+        <li><a href="#">PRA80</a></li><li><a href="#">PRA100</a></li>
+        <li><a href="#">RXA60</a></li><li><a href="#">RXA65</a></li>
+        <li><a href="#">RXA75</a></li><li><a href="#">RXA100</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fc-col">
+    <div class="fc-hd"><span class="en">Comment</span><span class="zh">新闻热评</span></div>
+    <div class="fc-body">
+      <div class="fc-imgs"><div class="fc-bk"></div><div class="fc-bk"></div></div>
+      <ul class="fc-links">
+        <li><a href="#">Keyboard Parts</a></li><li><a href="#">Manufacturing</a></li>
+        <li><a href="#">PCB Parts</a></li><li><a href="#">Keycaps</a></li>
+        <li><a href="#">Switches</a></li><li><a href="#">Accessories</a></li>
+        <li><a href="#">Cables</a></li><li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="sc"><div class="sc-box"></div><span>銥€</span></div>
+
+<div id="instr">
+  <div class="instr-top">
+    <span class="instr-ttl"MF1703鍵盤使用說明</span>
+    <span class="instr-sub">滑絵橹镶璏噢</span>
+    <span class="instr-time">23:40:11</span>
+  </div>
+  <div class="instr-body">1. 使用上方按鈕設定連線類型
+
+2.1. 如果是 USB 連接，請使用數據線將設備連接到設備
+
+2.2. 如果是 2.4GHz 連接，請將提供的適配器插入設備的端口
+
+2.3. 如果是 BT 連接，請按住 FN 和 z/x/c 鍵進入配對模式，然後進行配對</div>
+</div>
+
+<div id="botnav">
+  銥◆撋斴帮钱钒驱銥◆ &nbsp;－&nbsp; 銥◆寒垠帏镶謰零绑銥◆ &nbsp;－&nbsp; 銥◆帏慁&nbsp;撇粤焰绑銥◆ &nbsp;－&nbsp; 銥◆帏慁盈冷绡捐裂銥◆ &nbsp;－&nbsp; 銥◆RSS璐帜橥銥◆
+</div>
+
+<div id="foot">
+  <span>鎏典俶滑廖俊揭 &nbsp;滑翦╱ 炊翦$钥腩旅 &nbsp;盏 &nbsp;痦铩◆镢龠CP惣€18024899盏€-2 &nbsp;银€根卜旖浣熔 &nbsp;鹎橥猕罗铩€钋•</span>
+  <div class="foot-logo">
+    <div class="foot-icon">驱</div>
+    <div><div class="foot-txt">驱动之家</div><div class="foot-en">MyDrivers.com</div></div>
+  </div>
+</div>
+
+</body>
+</html>
